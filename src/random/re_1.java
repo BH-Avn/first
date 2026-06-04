@@ -1,3 +1,4 @@
+package random;
 //recursion 
 import java.util.*;
 class re_1
