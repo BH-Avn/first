@@ -73,21 +73,21 @@ class Database
 public class Main 
 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Database db = new Database(); // Create one database for the program to use
+        Scanner in = new Scanner(System.in);
+        Database db = new Database(); 
 
         while (true) {
             System.out.println("1. Add Formula\n2. Search\n3. List All\n4. Edit Keywords\n5. Exit");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Clear the \n trap
+            int choice = in.nextInt();
+            in.nextLine(); 
 
-            // Route the choice
+            
             if (choice == 3) {
-                db.list(); // Call the list method on your db instance
+                db.list(); 
             } else if (choice == 5) {
-                break; // Exit the loop
+                break; 
             }
-            // Add other cases later
+            
         }
     }
 }
