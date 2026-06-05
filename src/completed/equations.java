@@ -1,7 +1,9 @@
+/* ax+b=c ; a , b ,c  x=   
+*/ // 
 package completed;
 import java.util.*;
 
-// 1. Tree Node Class for the Abstract Syntax Tree (AST)
+
 class BN {
     String data;
     BN left;

@@ -1,4 +1,4 @@
-package working;
+package live;
 import java.util.*;
 import static utils.Base.*;
 /*Formula object:
@@ -18,7 +18,7 @@ Check for: correct field types, constructor completeness,
  and whether the class is sufficient to support add/search/list/edit operations.*/
 class Formula
 {
-    int id;
+    int id;                    
     String expression;
     String type;
     String category;
@@ -36,43 +36,114 @@ class Formula
         
     }
 
+    void lvl1customkeywords()
+    {
+        // add custom keywords to lvl1keyword list 
+    }
+
+    void plLvl1Keywords()
+    {
+        //print lvl 1 keywords
+    }
+
+    void plLvl2Keywords()
+    {
+        //print lvl 2 keywords
+    }
+// sin2x=2SinAcos A
+
+
 }
 class Database 
 {
+    Scanner in =new Scanner(System.in);
     ArrayList<Formula> database= new ArrayList<>();
-    void add(Formula ob)
+    int lastIndex = database.size()-1;
+  
+    void add()
     {
-        //code here
-    }
+        pl("Enter Expression:");
+        String ex=in.nextLine().replace(" ","").toLowerCase();
+        pl("Enter Type:");
+        String ty=in.nextLine().replace(" ","").toLowerCase();
+         pl("Enter category:");
+        String ca=in.nextLine().replace(" ","").toLowerCase();
+        Formula ob=new Formula(lastIndex+1,ex,ty,ca);
+        lastIndex++;
+        generatelvl1Keywords(ob);
+        generatelvl2Keywords(ob);
+        
+        pl("Auto Generated Level 1 Keywords= ");
+        ob.plLvl1Keywords();
+        p("Do you want to add more keywords?");
+        if(checkYN()==0)
+        ob.lvl1customkeywords();
+        
+        pl("Auto Generated Level 2 Keywords= ");
+        ob.plLvl2Keywords();
+        pl("Do you want to edit anything in this formula ? ");
+        if(checkYN()==0)
+        edit(ob);
+        database.add(ob);  
+
+        store(ob); // stores in file database.txt
+        
+   }
+
+    
 
     void search(String searchWord)
     {
-        //match variable againsts the id , expression , type... then search the Formula object list with the variable value searchWord 
+        // keywords sin , cos , sin2x , cos2x 
     }
 
     void list()
-    {
+    {//id exp type cate
         for(int i=0;i<database.size();i++)
         {
-            pl(database.get(i).expression);
+            pl("\n\nID= "+database.get(i).id);
+            pl("Expression= "+database.get(i).expression);
+            pl("Type= "+database.get(i).type);
+            pl("Category= \n\n"+database.get(i).category);
+             
         }
     }
 
     void list(String type)
     {
-        // list specific field 
+        
     }
 
     void edit()
     {
          // edit anything except id
     }
+
+    void edit(Formula ob)
+    {
+        // edit specific object
+    }
+
+    private void generatelvl1Keywords(Formula ob)
+    {
+        //code here
+    }
+    private void generatelvl2Keywords(Formula ob)
+    {
+        //code here
+    }
+
+    void store(Formula ob)
+    {
+        // stores current formula and updates INDEX and LAST_ID at top of file
+    }
 }
 
 
 public class Main 
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Scanner in = new Scanner(System.in);
         Database db = new Database(); 
 
@@ -89,6 +160,7 @@ public class Main
             }
             
         }
+        in.close();
     }//hi aviral can u read it , yes i can read it 
  
-}
+} //
